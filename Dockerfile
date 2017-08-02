@@ -19,9 +19,9 @@ RUN apk update && \
     touch /etc/php7/php-fpm.d/env.conf && \
    rm -rf /var/www
 
-VOLUME /var/www/config
-VOLUME /var/www/backups
-VOLUME /var/session
+#VOLUME /var/www/config
+#VOLUME /var/www/backups
+#VOLUME /var/session
 
 COPY conf/services.d /etc/services.d
 COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
@@ -30,12 +30,22 @@ COPY conf/php/conf.d/php.ini /etc/php7/conf.d/zphp.ini
 
 COPY sysPass-2.1.11.17061503/ /var/www
 
-COPY permissions.sh /root/permissions.sh
-RUN chmod +x /root/permissions.sh && \
-./root/permissions.sh && \
-rm -f /root/permissions.sh
+RUN mkdir /var/session && \
+chown -R nginx:nginx /var/www && \
+chmod 750 /var/www -R
+
+#COPY permissions.sh /root/permissions.sh
+#RUN chmod +x /root/permissions.sh && \
+#./root/permissions.sh
+# && \
+#rm -f /root/permissions.sh
+#RUN chown 100:101 /var/www -Rf
+
+VOLUME /var/www/config
+VOLUME /var/www/backups
+VOLUME /var/session
 
 EXPOSE 80
 
 ENTRYPOINT ["/bin/s6-svscan", "/etc/services.d"]
-CMD []
+CMD "/bin/sh -c ./root/permissions.sh"
