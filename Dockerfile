@@ -32,6 +32,7 @@ COPY sysPass-2.1.11.17061503/ /var/www
 
 RUN mkdir /var/session && \
 chown -R nginx:nginx /var/www && \
+chown -R nginx:nginx /var/session && \
 chmod 750 /var/www -R
 
 #COPY permissions.sh /root/permissions.sh
@@ -48,4 +49,4 @@ VOLUME /var/session
 EXPOSE 80
 
 ENTRYPOINT ["/bin/s6-svscan", "/etc/services.d"]
-CMD "/bin/sh -c ./root/permissions.sh"
+CMD []
