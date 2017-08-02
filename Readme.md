@@ -2,7 +2,7 @@
 
 Made with Alpine, NGINX and PHP 7.
 
-This is an unofficial Dockerimage for the [Syspass Dockerimage](http://www.syspass.org/).
+This is an unofficial Dockerimage for the [Syspass Passwordmanager](http://www.syspass.org/).
 
 ## Usage
 
