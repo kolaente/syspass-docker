@@ -43,7 +43,7 @@ chmod 750 /var/www -R
 #RUN chown 100:101 /var/www -Rf
 
 VOLUME /var/www/config
-VOLUME /var/www/backups
+VOLUME /var/www/backup
 VOLUME /var/session
 
 EXPOSE 80
