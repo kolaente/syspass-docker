@@ -3,6 +3,7 @@ MAINTAINER kolaente - mowie.cc
 
 ENV TZ "Europe/Berlin"
 
+# Install NGINX and PHP 7
 RUN apk update && \
     apk --no-cache add bash tzdata curl ca-certificates s6 ssmtp mysql-client \
     nginx nginx-mod-http-headers-more && \
@@ -19,10 +20,7 @@ RUN apk update && \
     touch /etc/php7/php-fpm.d/env.conf && \
    rm -rf /var/www
 
-#VOLUME /var/www/config
-#VOLUME /var/www/backups
-#VOLUME /var/session
-
+# Copy Config
 COPY conf/services.d /etc/services.d
 COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY conf/php/php-fpm.conf /etc/php7/
@@ -30,18 +28,13 @@ COPY conf/php/conf.d/php.ini /etc/php7/conf.d/zphp.ini
 
 COPY sysPass-2.1.11.17061503/ /var/www
 
+# Permissions
 RUN mkdir /var/session && \
 chown -R nginx:nginx /var/www && \
 chown -R nginx:nginx /var/session && \
 chmod 750 /var/www -R
 
-#COPY permissions.sh /root/permissions.sh
-#RUN chmod +x /root/permissions.sh && \
-#./root/permissions.sh
-# && \
-#rm -f /root/permissions.sh
-#RUN chown 100:101 /var/www -Rf
-
+# Add Volumes
 VOLUME /var/www/config
 VOLUME /var/www/backup
 VOLUME /var/session
