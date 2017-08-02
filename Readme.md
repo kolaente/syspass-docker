@@ -2,7 +2,7 @@
 
 Made with Alpine, NGINX and PHP 7.
 
-This is an unofficial Dockerimage for the [http://www.syspass.org/](Syspass Dockerimage).
+This is an unofficial Dockerimage for the (http://www.syspass.org/][Syspass Dockerimage].
 
 ## Usage
 
@@ -12,7 +12,7 @@ Simply run
 docker run -p 80:80 -d kolaente/syspass
 ```
 
-The Container needs another DB-Container which holds the database. You can use [https://hub.docker.com/_/mariadb/](MariaDB)/[https://hub.docker.com/_/mysql/](Mysql).
+The Container needs another DB-Container which holds the database. You can use (https://hub.docker.com/_/mariadb/][MariaDB]/(https://hub.docker.com/_/mysql/][Mysql].
 
 ## Volumes
 
@@ -23,7 +23,7 @@ The container has three volumes:
 
 ## Docker-Compose
 
-Probably the easiest way to run the image is by using [https://docs.docker.com/compose/](docker-compose):
+Probably the easiest way to run the image is by using (https://docs.docker.com/compose/][docker-compose]:
 
 **Note:** You really should change `MYSQL_ROOT_PASSWORD` and `MYSQL_PASSWORD` when running in production!
 
@@ -54,7 +54,7 @@ services:
 
 ## Contributing
 
-If you run into any issues with the image or discover a bug, feel free to [https://github.com/kolaente/syspass-docker/issues/new](create a new issue) on Github.
+If you run into any issues with the image or discover a bug, feel free to (https://github.com/kolaente/syspass-docker/issues/new][create a new issue] on Github.
 
 Or, if you have any improvements to the image, fork and create a pull request.
 
